@@ -1,0 +1,6 @@
+@ User .. 
+name     :- Gaurav Sutar
+email    :- gauravstr05@gmail.com
+password :- Akshu2680
+auth-token >> eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM0ODI1MGZjMjhkNTNkNDE4ZGUzZWM1In0sImlhdCI6MTY2NTY3NTkzOX0.iCS5_tOuymdcIL4mdwJCFpfmGt2bivf5pgZkvPMN6QE
+
