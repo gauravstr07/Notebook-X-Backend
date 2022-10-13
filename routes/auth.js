@@ -13,23 +13,29 @@ router.post(
       min: 5,
     }),
   ],
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-    })
-      .then((user) => {
-        res.json(user);
-      })
-      .catch((err) => {
-        console.log(err);
-        res.json({ error: "Please enter unique value for email", message: err.message });
+    try {
+      // Check wheather the user is already exits
+      let user = await User.findOne({ email: req.body.email });
+      if (user) {
+        return res
+          .status(400)
+          .json({ error: "Sorry user already exits with this email" });
+      }
+      user = await User.create({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
       });
+      res.json(user);
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send("Some Error Occured")
+    }
   }
 );
 
